@@ -1,0 +1,156 @@
+/* Ishan Aadi — Personal Resume Website
+   CSS concepts: element, class and ID selectors; flexbox; grid;
+   positioning; typography; spacing; hover states; responsive media queries. */
+
+:root {
+  --navy: #10243a;
+  --blue: #2764a5;
+  --blue-light: #eaf2fb;
+  --ink: #18283a;
+  --muted: #68788b;
+  --paper: #ffffff;
+  --soft: #f5f8fc;
+  --line: #e3eaf2;
+  --accent: #77a9e3;
+  --shadow: 0 18px 50px rgba(16, 36, 58, .09);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+body {
+  font-family: "DM Sans", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+.container { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(227,234,242,.8);
+}
+.navbar { min-height: 76px; display: flex; align-items: center; justify-content: space-between; }
+.brand { font: 800 1.55rem "Manrope", sans-serif; color: var(--navy); letter-spacing: -2px; }
+.brand span { color: var(--blue); }
+.nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
+.nav-links a { font-size: .88rem; font-weight: 600; color: #536477; transition: color .2s ease; }
+.nav-links a:hover { color: var(--blue); }
+.nav-links .nav-contact { padding: 10px 17px; color: white; background: var(--navy); border-radius: 8px; }
+.menu-toggle { display: none; border: 0; background: transparent; color: var(--navy); font-size: 1.5rem; cursor: pointer; }
+
+.section { padding: 104px 0; position: relative; overflow: hidden; }
+.hero { min-height: 650px; display: flex; align-items: center; background: linear-gradient(125deg, #f7faff 0%, #edf4fc 60%, #e7f0fb 100%); }
+.hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 75px; position: relative; z-index: 2; }
+.eyebrow { color: var(--blue); font-size: .75rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 18px; }
+.status-dot { display: inline-block; width: 8px; height: 8px; background: #3ba77a; border-radius: 50%; margin-right: 8px; }
+h1, h2, h3 { font-family: "Manrope", sans-serif; line-height: 1.2; }
+.hero h1 { color: var(--navy); font-size: clamp(2.8rem, 5.5vw, 4.7rem); letter-spacing: -3px; font-weight: 800; }
+.hero h1 span { color: var(--blue); }
+.hero-text { max-width: 580px; margin: 24px 0 30px; color: #5d6f82; font-size: 1.08rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
+.button { display: inline-flex; align-items: center; gap: 15px; padding: 13px 20px; border-radius: 8px; font-weight: 700; font-size: .9rem; transition: transform .2s, box-shadow .2s; }
+.button:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.button-primary { color: white; background: var(--blue); }
+.button-secondary { color: var(--navy); background: white; border: 1px solid var(--line); }
+.hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 42px; color: #718195; font-size: .78rem; }
+.meta-divider { height: 4px; width: 4px; border-radius: 50%; background: var(--accent); }
+.hero-card { background: white; border: 1px solid rgba(255,255,255,.9); border-radius: 18px; padding: 30px; box-shadow: 0 25px 65px rgba(27,68,110,.13); position: relative; z-index: 2; }
+.card-top { display: flex; justify-content: space-between; align-items: center; }
+.card-label, .card-kicker, .project-number { font-size: .68rem; letter-spacing: 1.6px; font-weight: 700; color: #8090a2; }
+.sparkle { color: var(--blue); font-size: 1.5rem; }
+.avatar { width: 76px; height: 76px; margin: 28px 0 16px; display: grid; place-items: center; border-radius: 22px; color: white; background: linear-gradient(145deg, #163b61, #4b8bc8); font: 800 1.6rem "Manrope"; }
+.hero-card h2 { font-size: 1.45rem; color: var(--navy); }
+.muted { color: var(--muted); font-size: .9rem; }
+.mini-divider { height: 1px; background: var(--line); margin: 23px 0 14px; }
+.snapshot-row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; font-size: .78rem; border-bottom: 1px solid #f0f3f7; }
+.snapshot-row span { color: #8795a5; }
+.snapshot-row strong { text-align: right; color: var(--navy); font-weight: 700; }
+.text-link { display: inline-block; margin-top: 22px; color: var(--blue); font-size: .85rem; font-weight: 700; }
+.hero-orb { position: absolute; border: 1px solid rgba(39,100,165,.10); border-radius: 50%; pointer-events: none; }
+.orb-one { width: 420px; height: 420px; right: -170px; top: -200px; }
+.orb-two { width: 280px; height: 280px; right: -100px; bottom: -170px; }
+
+.section-light { background: var(--soft); }
+.two-column { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; }
+.section-title { color: var(--navy); font-size: clamp(2rem, 3.5vw, 2.8rem); letter-spacing: -1.5px; margin-bottom: 36px; }
+.about-copy p { color: #5e6e80; margin-bottom: 18px; }
+.interest-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 25px; }
+.interest-tags span, .project-type { padding: 7px 12px; border-radius: 30px; background: var(--blue-light); color: #315f91; font-size: .75rem; font-weight: 700; }
+.education-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 18px; }
+.info-card, .skill-card, .project-card { padding: 27px; border: 1px solid var(--line); border-radius: 13px; background: white; transition: transform .2s, box-shadow .2s; }
+.info-card:hover, .skill-card:hover, .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.featured-card { background: var(--navy); color: white; border-color: var(--navy); }
+.featured-card .card-index, .featured-card .card-kicker, .featured-card .muted { color: #b9cde1; }
+.card-index { display: block; margin-bottom: 28px; color: #9aabba; font-size: .75rem; font-weight: 700; }
+.card-kicker { margin-bottom: 12px; }
+.info-card h3 { font-size: 1.12rem; margin-bottom: 9px; }
+.score { color: var(--blue); font: 800 2rem "Manrope"; margin: 14px 0 2px; }
+.featured-card .score { color: white; }
+.date-pill { display: inline-block; margin-top: 18px; padding: 5px 10px; border-radius: 30px; background: #eef3f8; color: #526a83; font-size: .7rem; font-weight: 700; }
+.featured-card .date-pill { background: rgba(255,255,255,.13); color: white; }
+.timeline { max-width: 850px; margin-top: 12px; }
+.timeline-item { display: grid; grid-template-columns: 24px 1fr; gap: 22px; padding-bottom: 34px; }
+.timeline-marker { width: 12px; height: 12px; margin-top: 7px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 6px #dceafa; position: relative; }
+.timeline-item:not(:last-child) .timeline-marker::after { content: ""; position: absolute; width: 1px; height: 145px; background: #d4dfeb; top: 18px; left: 5px; }
+.timeline-content { padding: 0 0 22px; border-bottom: 1px solid var(--line); }
+.timeline-heading { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; }
+.timeline-heading h3 { color: var(--navy); font-size: 1.2rem; }
+.company { color: var(--blue); font-weight: 700; margin-top: 4px; }
+.timeline-content > p { color: #66778a; margin-top: 14px; max-width: 720px; }
+.small-note { margin-top: 15px; color: #8996a5; font-size: .75rem; }
+.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.skill-icon { width: 43px; height: 43px; display: grid; place-items: center; margin-bottom: 23px; color: var(--blue); background: var(--blue-light); border-radius: 11px; font-size: 1.2rem; }
+.skill-card h3, .project-card h3 { color: var(--navy); font-size: 1.05rem; margin-bottom: 12px; }
+.skill-card p, .project-card p { color: #6a7a8b; font-size: .88rem; }
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.project-card { padding: 32px; }
+.project-number { color: var(--blue); margin-bottom: 23px; }
+.project-card h3 { font-size: 1.25rem; }
+.project-type { display: inline-block; margin-top: 20px; }
+.contact-section { background: var(--navy); color: white; }
+.contact-section .eyebrow { color: #9bc3ef; }
+.contact-section .section-title { color: white; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.contact-intro { color: #b8c8d8; max-width: 440px; }
+.contact-panel { padding: 12px 26px; border: 1px solid rgba(255,255,255,.15); border-radius: 14px; background: rgba(255,255,255,.05); }
+.contact-panel a { display: flex; justify-content: space-between; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+.contact-panel a:last-child { border-bottom: 0; }
+.contact-panel span { color: #9eb1c5; font-size: .82rem; }
+.contact-panel strong { color: white; font-size: .85rem; text-align: right; }
+.footer { padding: 22px 0; background: #0b1b2d; color: #9aadc1; font-size: .76rem; }
+.footer-inner { display: flex; justify-content: space-between; gap: 18px; }
+.footer a { color: white; }
+
+@media (max-width: 900px) {
+  .hero-grid { gap: 35px; }
+  .education-grid { grid-template-columns: 1fr 1fr; }
+  .featured-card { grid-column: span 2; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .two-column, .contact-grid { gap: 45px; }
+}
+@media (max-width: 680px) {
+  .container { width: min(100% - 34px, 540px); }
+  .navbar { min-height: 66px; }
+  .menu-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; padding: 18px 24px 24px; background: white; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 15px; }
+  .nav-links.show { display: flex; }
+  .nav-links .nav-contact { display: inline-block; text-align: center; }
+  .section { padding: 76px 0; }
+  .hero { min-height: auto; }
+  .hero-grid, .two-column, .contact-grid { grid-template-columns: 1fr; }
+  .hero-grid { gap: 45px; }
+  .hero h1 { font-size: clamp(2.55rem, 12vw, 3.7rem); letter-spacing: -2px; }
+  .hero-card { max-width: 430px; }
+  .hero-meta { margin-top: 28px; }
+  .section-title { margin-bottom: 25px; }
+  .education-grid, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+  .featured-card { grid-column: auto; }
+  .timeline-heading { flex-direction: column; gap: 4px; }
+  .timeline-item:not(:last-child) .timeline-marker::after { height: 175px; }
+  .contact-panel { padding-inline: 18px; }
+  .contact-panel a { flex-direction: column; gap: 5px; }
+  .contact-panel strong { text-align: left; overflow-wrap: anywhere; }
+  .footer-inner { flex-direction: column; gap: 6px; }
+}
